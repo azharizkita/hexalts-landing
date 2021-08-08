@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://hexalts.com
+
+# Sitemaps
+Sitemap: https://hexalts.com/sitemap.xml

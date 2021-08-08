@@ -1,0 +1,25 @@
+.blog h2 {
+    @apply text-left text-2xl text-gray-900;
+}
+
+.blog p {
+    @apply text-justify text-gray-900;
+}
+
+.blog blockquote {
+    @apply p-4 italic border-l-4 bg-gray-200 border-yellow-500 rounded-xl;
+}
+
+.container-content {
+    min-height: 100%;
+}
+
+.container-content-maximize {
+    min-height: calc(100vh - theme('height.16'));
+}
+
+@screen sm {
+    .container-content {
+        min-height: calc(100vh - theme('height.16'));
+    }
+}
