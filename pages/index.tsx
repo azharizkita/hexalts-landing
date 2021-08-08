@@ -12,11 +12,33 @@ export default function Home() {
       <div className="duration-300 flex flex-col bg-white sm:bg-gray-100 container-content">
         <Head>
           <title>Hexalts - Accelerating your development.</title>
-          <link rel="icon" href="/favicon.ico" />
+          <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="/apple-touch-icon.png"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/favicon-32x32.png"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/favicon-16x16.png"
+          />
+          <link rel="manifest" href="/site.webmanifest" />
+          <meta name="msapplication-config" content="/browserconfig.xml" />
+          <meta name="msapplication-TileColor" content="#000000" />
+          <meta name="theme-color" content="#000000" />
         </Head>
         <main className="flex flex-col items-center justify-center w-full gap-5 text-center bg-black pb-10">
           <div
-            className={"flex flex-col min-h-screen items-center justify-center px-5"}
+            className={
+              "flex flex-col min-h-screen items-center justify-center px-5"
+            }
           >
             <p className={"font-black text-gray-100 md:text-8xl text-5xl"}>
               Accelerating Your Development

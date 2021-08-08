@@ -31,7 +31,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           locale: "en_US",
           url: "https://hexalts.com/",
           title: "Hexalts - Accelerating your development.",
-          images: [{ url: "https://avatars.githubusercontent.com/u/28642152" }],
+          images: [{ url: "https://hexalts.com/android-chrome-512x512.png" }],
           description:
             "Hexalts is a non-profit community focusing on backend and frontend data delivery technology.",
         }}
