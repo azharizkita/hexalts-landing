@@ -7,7 +7,7 @@ import { NextSeo } from "next-seo";
 export default function Home() {
   const [article, setArticle] = useState("");
   useEffect(() => {
-    fetch(`http://hexalts.com/rdbc.md`).then((value) => {
+    fetch(`https://hexalts.com/rdbc.md`).then((value) => {
       value.text().then((result) => setArticle(result));
     });
   }, []);
