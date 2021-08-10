@@ -19,22 +19,24 @@ Let's say you already have a MongoDB with collection `cats` with multiple docume
 First, you need to set up the RDB Configuration.
 
 ```javascript
-import RDB from '@hexalts/rdbc';
+import RDB from "@hexalts/rdbc";
 
-const database = 'jembatanku';
+const instanceId = "random UUIDv4";
 const RDB = new RDB(
   {
-    host: 'mqtt://broker.hivemq.com:1883',
+    host: "wss://broker.address.com:8883",
   },
-  database
+  instanceId
 );
-
 ```
 
-Next step is to create a Collection instance. It goes like this.
+> You can try to generate an UUID v4 on [this page](https://www.uuidgenerator.net/version4), and make sure the client instanceId matches with the server instanceId. Otherwise it won't work.
+
+Next step is to set up the database target and the collection we want to use.
 
 ```javascript
-const instance = RDB.Collection('cats');
+const instance = RDB.Database("hexalts");
+instance.Collection("cats");
 ```
 
 Note that you only need to do this setup for once. It is dead simple. Then you can get all those `cat` like this.
@@ -42,7 +44,7 @@ Note that you only need to do this setup for once. It is dead simple. Then you c
 ```javascript
 const getAllCats = async () => {
   const result = await instance.Get();
-  console.log(result.payload);
+  console.log(result);
 };
 
 getAllCats();
@@ -50,14 +52,14 @@ getAllCats();
 
 ### Stream
 
-What if you want to listen to changes that affected any documents inside `cats` collection, while you get all documents inside `cats` collection at once? No worries, because it is as easy as
+What if you want to listen to changes that affected any documents inside `cats` collection, while you get all documents inside `cats` collection at once? No worries, because it is as easy as this.
 
 ```javascript
 const watchThoseCats = async () => {
-  const stream = instance.Stream('all');
-  stream.on('data', (data) => {
-    console.log(data.payload);
-  })
+  const stream = instance.Stream("all");
+  stream.on("data", (data) => {
+    console.log(data);
+  });
 };
 
 watchThoseCats();
@@ -97,15 +99,15 @@ What if you want to get documents with multiple rules? Let's assume you have suc
 
 ```
 
-Let's say you want to get any `persian medium` cats with age greater than 1. It goes like this.
+Let's say you want to get any `persian medium` cats with age greater than `1`. It goes like this.
 
 ```javascript
 const whereAreThoseCats = async () => {
-  const stream = instance.Stream('all');
-  instance.Where('race', '==', 'persian medium')
-  instance.Where('age', '>', 1)
-  stream.on('data', (data) => {
-    console.log(data.payload);
+  instance.Where("race", "==", "persian medium");
+  instance.Where("age", ">", 1);
+  const stream = instance.Stream("all");
+  stream.on("data", (data) => {
+    console.log(data);
   });
 };
 
@@ -135,7 +137,7 @@ First, it will fetch you all documents which meets your rules. And then, once a 
 
 A note to remember:
 
->The Where() method actually push any query into the instance state, it means you need to Clear the Where condition to default every time you need a different query pattern.
+> The Where() method actually push any query into the instance state, it means you need to Clear the Where condition to default every time you need a different query pattern.
 
 But don't worry, because it is as easy as this.
 
@@ -151,44 +153,47 @@ Let's say you inputted `ciyo` accidentally (it should be `cio`) and you want to 
 
 ```javascript
 const changeCatName = async () => {
-  instance.Where('_id', '==', '1')
-  const result = await instance.Update({ name: 'cio' });
+  instance.Where("_id", "==", "1");
+  const result = await instance.Update({ name: "cio" });
   console.log(result);
 };
 
 changeCatName();
 ```
+
 2. If you don't remember the document id.
 
 ```javascript
 const changeCatName = async () => {
-  instance.Where('name', '==', 'ciyo')
-  const result = await instance.Update({ name: 'cio' });
+  instance.Where("name", "==", "ciyo");
+  const result = await instance.Update({ name: "cio" });
   console.log(result);
 };
 
 changeCatName();
 ```
-### Delete
-Let's say `cio` has just passed away and you want to move on, completely. Just like the Update method, you can use Where condition to delete it
 
+### Delete
+
+Let's say `cio` has just passed away and you want to move on, completely. Just like the Update method, you can use Where condition to delete it
 
 1. If you know the document id.
 
 ```javascript
 const changeCatName = async () => {
-  instance.Where('_id', '==', '1')
+  instance.Where("_id", "==", "1");
   const result = await instance.Delete();
   console.log(result);
 };
 
 changeCatName();
 ```
+
 2. If you don't remember the document id.
 
 ```javascript
 const changeCatName = async () => {
-  instance.Where('name', '==', 'ciyo')
+  instance.Where("name", "==", "ciyo");
   const result = await instance.Delete();
   console.log(result);
 };
