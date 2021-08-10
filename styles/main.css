@@ -1,13 +1,25 @@
 .blog h2 {
-    @apply text-left text-2xl text-gray-900;
+    @apply text-left text-2xl text-gray-200;
+}
+
+.blog ul {
+    @apply list-disc text-left;
+}
+
+.blog ol {
+    @apply list-decimal text-left;
+}
+
+.blog h3 {
+    @apply text-left text-xl text-gray-200;
 }
 
 .blog p {
-    @apply text-justify text-gray-900;
+    @apply text-justify text-gray-200;
 }
 
-.blog blockquote {
-    @apply p-4 italic border-l-4 bg-gray-200 border-yellow-500 rounded-xl;
+.blog blockquote p {
+    @apply p-4 italic border-l-4 bg-gray-200 border-yellow-500 rounded-xl text-gray-900;
 }
 
 .container-content {
@@ -16,6 +28,22 @@
 
 .container-content-maximize {
     min-height: calc(100vh - theme('height.16'));
+}
+
+.blog pre {
+    @apply block whitespace-pre overflow-auto text-left bg-gray-200 p-5 rounded border border-gray-300;
+}
+
+.blog pre code {
+    @apply text-sm border-0 text-gray-900;
+}
+
+.blog code {
+    @apply whitespace-pre bg-gray-200 p-1 rounded border border-gray-300 text-gray-900;
+}
+
+.blog a {
+    @apply text-yellow-700 underline;
 }
 
 @screen sm {

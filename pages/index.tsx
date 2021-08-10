@@ -5,7 +5,7 @@ import Ecosystem from "./ecosystem.svg";
 
 export default function Home() {
   return (
-    <div className={"relative"}>
+    <div className={"relative bg-black"}>
       <div className={"z-10 sticky top-0"}>
         <Navbar page={"root"} />
       </div>
@@ -49,6 +49,34 @@ export default function Home() {
             </p>
           </div>
           <div
+            className={
+              "min-h-screen flex flex-col gap-10 items-center justify-center px-5 text-gray-200"
+            }
+          >
+            <div>
+              <p className={"text-2xl"}>
+                How does Hexalts ecosystem accelerate your developments?
+              </p>
+            </div>
+            <div
+              className={
+                "grid grid-cols-4 items-center justify-center gap-5 w-full"
+              }
+            >
+              <div className={"flex flex-col gap-2 col-span-full"}>
+                <Ecosystem className={"m-auto flex-grow w-full"} />
+              </div>
+            </div>
+            <div>
+              <p className={"max-w-3xl"}>
+                Hexalts ecosystem provides a server side (RDB) and a client side
+                (RDB-C) program that simplify MongoDB queries and connection
+                setup into the database itself.
+              </p>
+            </div>
+          </div>
+
+          <div
             className={"px-5 flex flex-col gap-8 items-center justify-center"}
           >
             <div>
@@ -87,128 +115,6 @@ export default function Home() {
                   unified response which helps anyone to do rapid development
                   with no fees both for personal and commercial use.
                 </p>
-              </div>
-            </div>
-          </div>
-          <div
-            className={
-              "min-h-screen flex flex-col gap-8 items-center justify-center px-5 text-gray-200"
-            }
-          >
-            <div>
-              <p className={"text-2xl"}>
-                How does Hexalts ecosystem accelerate your developments?
-              </p>
-            </div>
-            <div>
-              <p className={"max-w-3xl"}>
-                Hexalts ecosystem provides a server side (RDB) and a client side
-                (RDB-C) program that simplify MongoDB queries and connection
-                setup into the database itself.
-              </p>
-            </div>
-            <div
-              className={
-                "grid grid-cols-4 items-center justify-center gap-5 w-full"
-              }
-            >
-              <div className={"flex flex-col gap-2 col-span-full"}>
-                <Ecosystem className={"m-auto flex-grow w-full"} />
-              </div>
-            </div>
-          </div>
-          <div
-            className={
-              "min-h-screen flex flex-col gap-8 px-5 items-center justify-center"
-            }
-          >
-            <div>
-              <p className={"text-2xl text-gray-200"}>
-                When will Hexalts ecosystem stable build be available?
-              </p>
-            </div>
-            <div>
-              <p className={"max-w-3xl text-gray-200"}>
-                As soon as possible. Currently we focus to migrate from bare
-                project to NestJS to utilize it`s scalability. The client side
-                (RDB-C) is already available to use, and here is some example of
-                how easy is it to use Hexalts implementations.
-              </p>
-            </div>
-            <div
-              className={
-                "grid grid-cols-4 items-center justify-center gap-5 max-w-6xl rounded-3xl text-gray-200"
-              }
-            >
-              <div
-                className={"flex flex-col gap-2 col-span-full md:col-span-2"}
-              >
-                <div>
-                  <p className={"font-semibold"}>Normal declarations</p>
-                </div>
-                <code
-                  className={
-                    "block whitespace-pre overflow-auto text-left bg-gray-800 p-5 rounded text-gray-200"
-                  }
-                >
-                  {`const movies = database.collection("movies");
-const query = { rating: { $lt: 5 }, year: { $lt: 2020 } };
-const cursor = movies.find(query);
-cursor.then((response) => console.log(response.forEach()));`}
-                </code>
-                <div>
-                  <p className={"text-gray-300"}>199 total characters.</p>
-                </div>
-              </div>
-              <div
-                className={"flex flex-col gap-2 col-span-full md:col-span-2"}
-              >
-                <div>
-                  <p className={"font-semibold"}>Hexalts implementation.</p>
-                </div>
-                <code
-                  className={
-                    "block whitespace-pre overflow-auto text-left bg-gray-800 p-5 rounded border-gray-500 text-gray-200"
-                  }
-                >
-                  {`RDB.Collection("movies")
-.Where("rating", ">", 5)
-.Where("year", ">", 2020)
-.Get().then((response) => console.log(response.payload));`}
-                </code>
-                <div>
-                  <p className={"text-gray-300"}>133 total characters.</p>
-                </div>
-              </div>
-              <div
-                className={
-                  "flex flex-col gap-2 col-start-1 col-span-full md:col-span-2 md:col-start-2"
-                }
-              >
-                <div>
-                  <p className={"font-semibold"}>
-                    Hexalts implementation on{" "}
-                    <a
-                      className={"underline"}
-                      href={"https://docs.mongodb.com/manual/changeStreams/"}
-                    >
-                      Change Stream
-                    </a>
-                  </p>
-                </div>
-                <code
-                  className={
-                    "block whitespace-pre overflow-auto text-left bg-gray-800 p-5 rounded text-gray-200"
-                  }
-                >
-                  {`RDB.Collection("movies")
-.Where("rating", ">", 5)
-.Where("year", ">", 2020)
-.Stream().on('data', (data) => console.log(data));`}
-                </code>
-                <div>
-                  <p className={"text-gray-300"}>126 total characters.</p>
-                </div>
               </div>
             </div>
           </div>
